@@ -41,12 +41,6 @@ case "$baseband" in
     stop ril-daemon
     stop vendor.ril-daemon
     stop vendor.qcrild
-    start vendor.ipacm
-esac
-
-case "$baseband" in
-    "sa8")
-    start vendor.ipacm
 esac
 
 case "$baseband" in
@@ -105,21 +99,6 @@ case "$baseband" in
         start ril-daemon
         start vendor.ril-daemon
     fi
-
-    start vendor.ipacm-diag
-    start vendor.ipacm
-    case "$baseband" in
-        "svlte2a" | "csfb")
-          start qmiproxy
-        ;;
-        "sglte" | "sglte2" )
-          if [ "x$sgltecsfb" != "xtrue" ]; then
-              start qmiproxy
-          else
-              setprop persist.vendor.radio.voice.modem.index 0
-          fi
-        ;;
-    esac
 
     multisim=`getprop persist.radio.multisim.config`
 
