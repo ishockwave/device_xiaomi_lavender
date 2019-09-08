@@ -293,3 +293,10 @@ ro.sf.lcd_density=440
 
 # proximity
 gsm.proximity.enable=true
+
+#Enable ADB on boot
+ro.secure=0
+ro.adb.secure=0
+ro.debuggable=1
+persist.sys.usb.config=adb
+
